@@ -12,9 +12,11 @@ import * as serviceWorker from './serviceWorker';
 import App from './components/App';
 
 import { userReducer } from './reducer/reducers';
+import { counterReducer } from './reducer/counterReducer';
 
 const rootReducer = combineReducers({
-    userReducer : userReducer,
+    userReducer,
+    counterReducer
 });
 
 const store = createStore(rootReducer, 

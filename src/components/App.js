@@ -10,10 +10,6 @@ import { fetchUser } from '../actions/actions';
 class App extends Component {
     constructor(props){
         super(props);
-
-        this.state = {
-            count : 0
-        }
     }
 
     componentDidMount(){
@@ -21,19 +17,19 @@ class App extends Component {
     }
 
     incrementCount = () => {
-        this.setState({count : this.state.count + 1});
+        this.props.incCount();
     }
 
     decrementCount = () => {
-        this.setState({count : this.state.count - 1});
+        this.props.decCount();
     }
 
     render() {
         console.log(this.props);
-        const { userArray } = this.props;
+        const { userArray, counter } = this.props;
         return (
             <div>
-               <p>Count : {this.state.count}</p>
+               <p>Count : {counter}</p>
                <button className="btn btn-primary" onClick={this.incrementCount}>Increment</button>
                <button className="btn btn-primary" onClick={this.decrementCount}>Decrement</button>
                <ul>
@@ -49,12 +45,15 @@ class App extends Component {
 const mapStateToProps = state => {
     return {
         userArray: state.userReducer,
+        counter : state.counterReducer.count
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         fetchUser: () => dispatch(actions.fetchUser()),
+        incCount: () => dispatch(actions.incCount()),
+        decCount: () => dispatch(actions.decCount()),
     }
 }
 
