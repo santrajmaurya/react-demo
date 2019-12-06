@@ -10,7 +10,7 @@ export const fetchUser = () => dispatch => {
 
 export const getUser = (userData) => {
     return {
-        type: actionTypes.GET_DATA,
+        type: actionTypes.GET_USER_DATA,
         userData
     };
   };

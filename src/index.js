@@ -10,13 +10,15 @@ import thunk from 'redux-thunk';
 import * as serviceWorker from './serviceWorker';
 
 import App from './components/App';
+import Main from './components/Main';
+import UsersList from './components/UsersList';
 
 import { userReducer } from './reducer/reducers';
 import { counterReducer } from './reducer/counterReducer';
 
 const rootReducer = combineReducers({
-    userReducer,
-    counterReducer
+    userReducer : userReducer,
+    counterReducer : counterReducer
 });
 
 const store = createStore(rootReducer, 
@@ -25,7 +27,7 @@ const store = createStore(rootReducer,
 
 const app = (
     <Provider store={store}>
-        <App />
+        <UsersList />
     </Provider>
 );
 
